@@ -1,0 +1,8 @@
+.search-option {
+    cursor: pointer;
+    border: 1px solid rgba(71, 68, 68, 0.897);
+    padding: 0.7rem;
+    background-color: white;
+    text-align: center;
+    font-weight: 500;
+}

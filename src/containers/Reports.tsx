@@ -40,7 +40,11 @@ class Reports extends React.Component<IOptions, IReports> {
 
     handleSearch(term) {
         return function(x) {
-            return x.title.toLowerCase().includes(term.toLowerCase()) || !term
+            return x.title.toLowerCase().includes(term.toLowerCase()) 
+                || x.description.toLowerCase().includes(term.toLowerCase()) 
+                || x.month.toLowerCase().includes(term.toLowerCase()) 
+                || x.cost === term ? true : false
+                || !term
         }
     }
 
@@ -58,7 +62,7 @@ class Reports extends React.Component<IOptions, IReports> {
         } else {
             const reportData = this.mapItems(items)
             return (
-                <div className='container-fluid m-top'>
+                <div className='container-fluid m-top' style={{transition: 'all 0.3s ease-out'}}>
                     <div className='row' style={{ justifyContent: 'space-evenly' }}>
                         {reportData}
                     </div>

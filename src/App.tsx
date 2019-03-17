@@ -7,7 +7,7 @@ const PageNotFound = lazy(()=> import('./components/404'));
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './styles/theme/theme.css';
 
-export class App extends React.Component<any, {}> {
+export class App extends React.Component<{}, {}> {
     render() {
         return(
             <Router>

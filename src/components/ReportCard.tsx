@@ -1,7 +1,8 @@
 import React from 'react';
 
 export const ReportCard = (props) => {
-    const { id, title, description, imageUrl, month, publishedYear, cost } = props.data
+    const { id, title, description, imageUrl, date, cost } = props.data
+    let d = new Date(date).toLocaleDateString();    
     return(
         <div key={props.index} className='col-12 col-lg-6'>
             <div className='custom-card' style={{display: 'flex'}}>
@@ -12,8 +13,8 @@ export const ReportCard = (props) => {
                     <p style={{color: 'rgb(0, 135, 122)', fontSize: '0.8rem', lineHeight: 1.5}}>{title}</p>
                     <p style={{fontSize: '0.6rem'}}>{description}</p>
                     <div>
-                        <p style={{color: 'rgb(119, 130, 135)', fontSize: '10px', marginBottom: 0}}>PUBLISHED DATE: {month.substring(0,3).toUpperCase()} {publishedYear}</p>
-                        <p style={{color: 'rgb(119, 130, 135)', fontSize: '10px', marginBottom: 0}}>COST: ${Math.round(cost)%10000}</p>
+                        <p style={{color: 'rgb(119, 130, 135)', fontSize: '10px', marginBottom: 0}}>PUBLISHED DATE: {d}</p>
+                        <p style={{color: 'rgb(119, 130, 135)', fontSize: '10px', marginBottom: 0}}>COST: ${Math.round(cost)}</p>
                     </div>
                 </div>
             </div>

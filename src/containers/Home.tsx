@@ -17,8 +17,8 @@ class Home extends React.Component<{}, IHome> {
             showFilterOption: false,
             searchText: '',
             sortOption: {
-                field: undefined,
-                order: undefined
+                field: 'Cost',
+                order: 'ASC'
             },
             filterOption: {
                 field: undefined,
@@ -39,9 +39,9 @@ class Home extends React.Component<{}, IHome> {
 
     handleShowSort = (e) => {
         e.preventDefault();
-            this.setState(prevState => ({
-                showSortOption: !prevState.showSortOption
-            })
+        this.setState(prevState => ({
+            showSortOption: !prevState.showSortOption
+        })
         );
     }
 
@@ -52,19 +52,22 @@ class Home extends React.Component<{}, IHome> {
         this.setState({ sortOption })
     }
 
-    handleSortSubmit = (e) => {}
+    handleSortSubmit = (e) => { }
 
     handleShowFilter = (e) => {
         e.preventDefault();
-            this.setState(prevState => ({
-                showFilterOption: !prevState.showFilterOption
-            })
+        this.setState(prevState => ({
+            showFilterOption: !prevState.showFilterOption
+        })
         );
     }
 
+    handleFilterOption = (e) => { }
+
+    handleFilterSubmit = (e) => { }
+
     render() {
         const { searchText, sortOption, filterOption, showSortOption, showFilterOption } = this.state
-        console.log(sortOption)
         return (
             <div>
                 <Navigation />
@@ -85,12 +88,13 @@ class Home extends React.Component<{}, IHome> {
                             <div onClick={this.handleShowFilter} className='col-6 search-option'>Filter</div>
                         </div>
                         {showSortOption &&
-                            <form className='container' onSubmit={this.handleSortSubmit}>
-                                <div className='col'>
-                                    <p>Order</p> <br />
-                                    <div className="row">
-                                        <label htmlFor="Order for Sorting">
+                            <form className='row' style={{ border: '1px solid', borderTop: 'none' }}>
+                                <div className='col-6' style={{ display: 'flex', flexDirection: 'column', marginTop: '5px' }}>
+                                    <h6 className='text-center' style={{textDecoration: 'underline'}}>Order</h6>
+                                    <div style={{ marginLeft: '0px', justifyContent: 'space-evenly' }} className='row'>
+                                        <label style={{ marginRight: '0.8rem' }} htmlFor="Order for Sorting">
                                             <input
+                                                style={{ marginRight: '0.2rem' }}
                                                 type="radio"
                                                 value="ASC"
                                                 name="order"
@@ -101,6 +105,7 @@ class Home extends React.Component<{}, IHome> {
                                         </label>
                                         <label htmlFor="Order for Sorting">
                                             <input
+                                                style={{ marginRight: '0.2rem' }}
                                                 type="radio"
                                                 value="DSC"
                                                 name="order"
@@ -111,11 +116,12 @@ class Home extends React.Component<{}, IHome> {
                                         </label>
                                     </div>
                                 </div>
-                                <div className='col'>
-                                    <p>Field</p> <br />
-                                    <div className='row'>
-                                        <label htmlFor="Field for Sorting">
+                                <div className='col-6' style={{ display: 'flex', flexDirection: 'column', marginTop: '5px' }}>
+                                    <h6 className='text-center' style={{textDecoration: 'underline'}}>Field</h6>
+                                    <div style={{ marginLeft: '0px', justifyContent: 'space-evenly' }} className='row'>
+                                        <label style={{ marginRight: '0.8rem' }} htmlFor="Field for Sorting">
                                             <input
+                                                style={{ marginRight: '0.2rem' }}
                                                 type="radio"
                                                 value="PublishedDate"
                                                 name="field"
@@ -126,6 +132,7 @@ class Home extends React.Component<{}, IHome> {
                                         </label>
                                         <label htmlFor="Field for Sorting">
                                             <input
+                                                style={{ marginRight: '0.2rem' }}
                                                 type="radio"
                                                 value="Cost"
                                                 name="field"
@@ -136,12 +143,12 @@ class Home extends React.Component<{}, IHome> {
                                         </label>
                                     </div>
                                 </div>
+                                <button type='submit' onClick={this.handleSortSubmit} style={{marginBottom: '5px'}} className='btn btn-outline-dark btn-sm mx-auto'>Sumbit</button>
                             </form>
                         }
                         {showFilterOption &&
-                            <div>
-                                FILTER
-                            </div>}
+                            <p>TBD</p>
+                        }
                     </div>
                     <Reports searchText={searchText} sortOption={sortOption} filterOption={filterOption} />
                 </div>

@@ -72,17 +72,26 @@ class Home extends React.Component<{}, IHome> {
             <div>
                 <Navigation />
                 <div className='container-fluid'>
-                    <div className='container form-group m-top'>
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search.."
-                            name="searchText"
-                            onChange={this.handleChange}
-                            value={this.state.searchText}
-                        />
+                    <div className={'container form-group m-top ' + (this.state.searchText.length > 0 ? 'is-type': '')}>
+                        <fieldset className='field-container'>
+                            <input
+                                type="text"
+                                className="field"
+                                placeholder="Search.."
+                                name="searchText"
+                                onChange={this.handleChange}
+                                value={this.state.searchText}
+                            />
+                            <div className='icons-container'>
+                                <div className="icon-search"></div>
+                                <div className="icon-close">
+                                    <div className="x-up"></div>
+                                    <div className="x-down"></div>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
-                    <div className='container m-top'>
+                    <div className='container-fluid m-top'>
                         <div className='row'>
                             <div onClick={this.handleShowSort} className='col-6 search-option'>Sort</div>
                             <div onClick={this.handleShowFilter} className='col-6 search-option'>Filter</div>
@@ -90,7 +99,7 @@ class Home extends React.Component<{}, IHome> {
                         {showSortOption &&
                             <form className='row' style={{ border: '1px solid', borderTop: 'none' }}>
                                 <div className='col-6' style={{ display: 'flex', flexDirection: 'column', marginTop: '5px' }}>
-                                    <h6 className='text-center' style={{textDecoration: 'underline'}}>Order</h6>
+                                    <h6 className='text-center' style={{ textDecoration: 'underline' }}>Order</h6>
                                     <div style={{ marginLeft: '0px', justifyContent: 'space-evenly' }} className='row'>
                                         <label style={{ marginRight: '0.8rem' }} htmlFor="Order for Sorting">
                                             <input
@@ -117,7 +126,7 @@ class Home extends React.Component<{}, IHome> {
                                     </div>
                                 </div>
                                 <div className='col-6' style={{ display: 'flex', flexDirection: 'column', marginTop: '5px' }}>
-                                    <h6 className='text-center' style={{textDecoration: 'underline'}}>Field</h6>
+                                    <h6 className='text-center' style={{ textDecoration: 'underline' }}>Field</h6>
                                     <div style={{ marginLeft: '0px', justifyContent: 'space-evenly' }} className='row'>
                                         <label style={{ marginRight: '0.8rem' }} htmlFor="Field for Sorting">
                                             <input
@@ -143,7 +152,7 @@ class Home extends React.Component<{}, IHome> {
                                         </label>
                                     </div>
                                 </div>
-                                <button type='submit' onClick={this.handleSortSubmit} style={{marginBottom: '5px'}} className='btn btn-outline-dark btn-sm mx-auto'>Sumbit</button>
+                                <button type='submit' onClick={this.handleSortSubmit} style={{ marginBottom: '5px' }} className='btn btn-outline-dark btn-sm mx-auto'>Sumbit</button>
                             </form>
                         }
                         {showFilterOption &&

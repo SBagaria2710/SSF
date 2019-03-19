@@ -11,7 +11,7 @@ export const ReportCard = (props) => {
                 </div>
                 <div className='col-9 col-lg-8' style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly'}}>
                     <p style={{color: 'rgb(0, 135, 122)', fontSize: '0.8rem', lineHeight: 1.5}}>{title}</p>
-                    <p style={{fontSize: '0.6rem'}}>{description}</p>
+                    <p style={{fontSize: '0.7rem'}}>{description}</p>
                     <div>
                         <p style={{color: 'rgb(119, 130, 135)', fontSize: '10px', marginBottom: 0}}>PUBLISHED DATE: {d}</p>
                         <p style={{color: 'rgb(119, 130, 135)', fontSize: '10px', marginBottom: 0}}>COST: ${Math.round(cost)}</p>

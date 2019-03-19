@@ -7,7 +7,7 @@ export const Navigation = () => {
     return (
         <nav style={{borderBottom: '0.2px solid grey'}} className='navbar navbar-expand-lg navbar-light'>
             <p className='navbar-brand' style={{fontWeight: 500, alighContent: 'center', paddingTop: '15px'}}>
-                Mordor Intelligence 
+                SSF
             </p>
             <div className="collapse navbar-collapse" style={{display: 'flex !important'}}>
                 <ul className="navbar-nav ml-auto">

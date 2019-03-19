@@ -42,14 +42,15 @@ class Reports extends React.Component<IOptions, IReports> {
         return function(x) {
             return x.title.toLowerCase().includes(term.toLowerCase()) 
                 || x.description.toLowerCase().includes(term.toLowerCase())  
-                || x.cost === term ? true : false
+                || parseInt(term) === Math.round(x.cost)
                 || !term
         }
     }
 
-    handleSort(sortOption) {
-        if(sortOption.field === 'PublishedDate') {
-            if(sortOption.order === 'ASC')
+    handleSort() {
+        const { field, order } = this.props.sortOption
+        if(field === 'PublishedDate') {
+            if(order === 'ASC')
                 return function(a,b) {
                     return new Date(a.date).getTime() - new Date(b.date).getTime()
                 }
@@ -60,7 +61,7 @@ class Reports extends React.Component<IOptions, IReports> {
             }
         }
         else {
-            if(sortOption.order === 'ASC')
+            if(order === 'ASC')
                 return function(a,b) {
                     return a.cost - b.cost
                 }
@@ -72,21 +73,20 @@ class Reports extends React.Component<IOptions, IReports> {
         }   
     }
 
-    mapItems = (items, ord) => {
+    mapItems = (items) => {
         return items.filter(this.handleSearch(this.props.searchText))
-            .sort(this.handleSort(this.props.sortOption))
+            .sort(this.handleSort())
             .map((item) => <ReportCard data={item} key={item.id} />)
     }
 
     render() {
-        const { error, isLoaded, items } = this.state
-        const { searchText, filterOption, sortOption } = this.props
+        const { error, isLoaded, items } = this.state 
         if (error) {
             return <div>Error: {error}</div>;
         } else if (!isLoaded) {
             return <Loader />;
         } else {
-            const reportData = this.mapItems(items, sortOption.order)
+            const reportData = this.mapItems(items)
             return (
                 <div className='container-fluid m-top' style={{transition: 'all 0.3s ease-out'}}>
                     <div className='row' style={{ justifyContent: 'space-evenly' }}>

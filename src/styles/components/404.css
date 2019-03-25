@@ -15,7 +15,7 @@
 .gradient404 {
     height: 150vh;
     background: rgb(52, 200, 168);
-    background: linear-gradient(to bottom right, #e7eb00, #cce208, #d1ce1b, #bcb32f, #a4a246, #a4a246, #9e964c);
+    background: linear-gradient(to bottom right, rgb(0, 135, 122),rgb(0, 135, 122),rgb(0, 135, 122),rgb(0, 135, 122),rgb(0, 135, 122),rgb(0, 135, 122),rgb(0, 135, 122));
     position: relative;
 }
 
